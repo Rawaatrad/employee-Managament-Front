@@ -15,6 +15,7 @@
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -22,6 +23,14 @@
       <tr *ngFor="let employee of employees">
         <td>{{ employee.firstName }}</td>
         <td>{{ employee.lastName }}</td>
+        <td>
+          <button
+            [routerLink]="['/update-employee', employee.id]"
+            class="btn btn-info"
+          >
+            Update
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

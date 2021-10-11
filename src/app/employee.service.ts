@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Employee } from './employee';
 
+//REST CLIENT CODE
+
 @Injectable({ //it can be injected in various components
   providedIn: 'root'
 })
@@ -18,5 +20,12 @@ export class EmployeeService {
   }
   addEmployee(employee: Employee): Observable<object> {
     return this.httpClient.post(`${this.Url}`, employee);
+  }
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.httpClient.get<Employee>(`${this.Url}/${id}`);
+
+  }
+  updateEmployee(id: number, employee: Employee): Observable<object> {
+    return this.httpClient.put(`${this.Url}/${id}`, employee)
   }
 }
